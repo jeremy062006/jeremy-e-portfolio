@@ -52,14 +52,13 @@
             to { opacity: 0; transform: scale(0.95); }
         }
 
-        /* --- ⭐ FINAL MODAL FIX (Re-engineered with CSS Grid) ⭐ --- */
         #modal-content {
-            display: grid; /* Use robust CSS Grid for layout */
-            grid-template-rows: minmax(0, 1fr) auto; /* Row 1 (media) grows, Row 2 (description) is auto */
-            overflow: hidden; /* Keep content within rounded corners */
+            display: grid; 
+            grid-template-rows: minmax(0, 1fr) auto;
+            overflow: hidden;
         }
         #media-container {
-            position: relative; /* Needed for positioning the nav buttons */
+            position: relative;
             background-color: #000;
             display: flex;
             align-items: center;
@@ -67,13 +66,12 @@
             overflow: hidden;
         }
         #description-container {
-           overflow-y: auto; /* Allow scrolling for long descriptions */
+           overflow-y: auto;
         }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <!-- Header -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#home" class="text-2xl font-bold text-white">Jeremy Orozco</a>
@@ -81,6 +79,9 @@
                 <a href="#home" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 active" data-section="home">Home</a>
                 <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors duration-300" data-section="about">About</a>
                 <a href="#portfolio" class="nav-link text-gray-300 hover:text-white transition-colors duration-300" data-section="portfolio">Portfolio</a>
+                <a href="#resume" class="nav-link text-gray-300 hover:text-white transition-colors duration-300" data-section="resume">Resume</a>
+                <a href="#certificates" class="nav-link text-gray-300 hover:text-white transition-colors duration-300" data-section="certificates">Certificates</a>
+                <a href="#recommendations" class="nav-link text-gray-300 hover:text-white transition-colors duration-300" data-section="recommendations">Recommendations</a>
                 <a href="#contact" class="nav-link text-gray-300 hover:text-white transition-colors duration-300" data-section="contact">Contact</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden text-white">
@@ -89,17 +90,18 @@
                 </svg>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
             <a href="#home" class="block py-2 text-gray-300 hover:text-white">Home</a>
             <a href="#about" class="block py-2 text-gray-300 hover:text-white">About</a>
             <a href="#portfolio" class="block py-2 text-gray-300 hover:text-white">Portfolio</a>
+            <a href="#resume" class="block py-2 text-gray-300 hover:text-white">Resume</a>
+            <a href="#certificates" class="block py-2 text-gray-300 hover:text-white">Certificates</a>
+            <a href="#recommendations" class="block py-2 text-gray-300 hover:text-white">Recommendations</a>
             <a href="#contact" class="block py-2 text-gray-300 hover:text-white">Contact</a>
         </div>
     </header>
 
     <main>
-        <!-- Home Section -->
         <section id="home" class="min-h-screen flex items-center bg-gray-900">
             <div class="container mx-auto px-6 text-center">
                 <div class="flex flex-col md:flex-row items-center justify-center gap-10">
@@ -117,7 +119,6 @@
             </div>
         </section>
 
-        <!-- About Section -->
         <section id="about" class="py-20">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">About Me</h2>
@@ -129,12 +130,10 @@
             </div>
         </section>
 
-        <!-- Portfolio Section -->
         <section id="portfolio" class="py-20 bg-gray-900">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">My Work</h2>
                 
-                <!-- Filter Buttons -->
                 <div id="filter-buttons" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
                     <button class="filter-btn active bg-indigo-600 text-white px-4 py-2 rounded-md transition-all duration-300" data-filter="all">All</button>
                     <button class="filter-btn bg-gray-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition-all duration-300" data-filter="photography">Photography</button>
@@ -143,15 +142,39 @@
                     <button class="filter-btn bg-gray-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition-all duration-300" data-filter="graphic-design">Graphic Design</button>
                 </div>
 
-                <!-- Portfolio Grid -->
                 <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Portfolio items will be injected here by JavaScript -->
+                    </div>
+            </div>
+        </section>
+
+        <section id="resume" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">My Resume</h2>
+                <div class="max-w-4xl mx-auto flex flex-col items-center gap-8">
+                    <div class="w-full border-4 border-gray-700 rounded-lg overflow-hidden shadow-lg">
+                         <img src="Dark Blue and White Simple Resume (3).jpg" alt="Resume Preview" class="w-full">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20">
+        <section id="certificates" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">Certificates</h2>
+                <div id="certificates-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    </div>
+            </div>
+        </section>
+
+        <section id="recommendations" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">Recommendations</h2>
+                <div id="recommendations-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-gray-900">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">Get In Touch</h2>
                 <div class="max-w-lg mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
@@ -178,18 +201,15 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 py-6">
         <div class="container mx-auto px-6 text-center text-gray-500">
             <p>&copy; 2025 Jeremy Orozco || Gemini. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Project Details Modal -->
     <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-[60] hidden">
         <div id="modal-content" class="bg-gray-800 text-white w-full max-w-4xl max-h-[90vh] rounded-lg shadow-2xl relative">
-            <!-- Modal content will be injected here by JavaScript -->
-        </div>
+            </div>
     </div>
 
 
@@ -220,12 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "videography",
             categoryLabel: "Videography",
             thumbnail: "BBC03569.JPG",
-            // ⭐ MODIFICATION: Use 'gdriveVideoId' for Google Drive videos.
-            // How to get the ID:
-            // 1. Share your video in Google Drive ("Anyone with the link").
-            // 2. The share link will look like: https://drive.google.com/file/d/THIS_IS_THE_ID/view?usp=sharing
-            // 3. Copy `THIS_IS_THE_ID` and paste it below.
-            gdriveVideoId: "1qzNnY6uESh7wZW-BNGG1_1ZletEp7gQT", // <-- PASTE YOUR GOOGLE DRIVE FILE ID HERE
+            gdriveVideoId: "1qzNnY6uESh7wZW-BNGG1_1ZletEp7gQT",
             description: "Directed and filmed a short narrative film, '4 Idyoks'. This project involved storyboarding, cinematography, and on-set direction to bring a compelling story to life."
         },
         {
@@ -385,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "video-editing",
             categoryLabel: "Video-editing",
             thumbnail: "Video Edited For Company - Manly/HOOK 1.png",
-            gdriveVideoId: "1jCg8hlzEgX4nUl8zcnGAzvJ_7TbmX5sq", // <-- PASTE YOUR GOOGLE DRIVE FILE ID HERE
+            gdriveVideoId: "1jCg8hlzEgX4nUl8zcnGAzvJ_7TbmX5sq",
             description: "Edited a compelling brand story video for a major tech company. Responsible for pacing, color grading, sound design, and motion graphics to create a polished and impactful final product."
         },
         {
@@ -394,8 +409,59 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "video-editing",
             categoryLabel: "Video-editing",
             thumbnail: "Video Edited For Company - Manly/HOOK 2.png",
-            gdriveVideoId: "1weSEIH3IAIEvVADGAcMmiO3c77eBIHEU", // <-- PASTE YOUR GOOGLE DRIVE FILE ID HERE
+            gdriveVideoId: "1weSEIH3IAIEvVADGAcMmiO3c77eBIHEU",
             description: "Edited a compelling brand story video for a major tech company. Responsible for pacing, color grading, sound design, and motion graphics to create a polished and impactful final product."
+        },
+    ];
+
+    // ❗ ACTION REQUIRED: Add your certificate details here.
+    // Use the same structure as the portfolioData. The modal will open automatically.
+    const certificatesData = [
+        {
+            id: 1,
+            title: "Developing Designs for Print Media",
+            categoryLabel: "TESDA National Certificate",
+            thumbnail: "Certificate_of_Completion_Developing Designs for Print Media_page-0001.jpg", // Path to a smaller thumbnail image
+            images: ["Certificate_of_Completion_Developing Designs for Print Media_page-0001.jpg"],     // Path to the full-size certificate image
+            description: "This certificate validates competency in various multimedia arts disciplines including graphic design, 2D/3D animation, and video production, meeting national standards."
+        },
+        {
+            id: 2,
+            title: "Design Thinking",
+            categoryLabel: "Online Course Certificate",
+            thumbnail: "Open_University Design Thinking_page-00012.jpg",
+            images: ["Open_University Design Thinking_page-0001.jpg"],
+            description: "Completed an intensive course on advanced video editing techniques, color grading, and audio mixing using Adobe Premiere Pro."
+        },
+        {
+            id: 3,
+            title: "Basic Graphic Designing",
+            categoryLabel: "LGU Workshop Certificate",
+            thumbnail: "img20250921_21320671.jpg",
+            images: ["img20250921_21320671.jpg"],
+            description: "Certificate of completion for a hands-on workshop covering modern web design principles, including responsive design with HTML5, CSS3, and JavaScript."
+        },
+    ];
+
+    // ❗ ACTION REQUIRED: Add your recommendations/testimonials here.
+    const recommendationsData = [
+        {
+            id: 1,
+            quote: "Jeremy's creativity and attention to detail are second to none. He took our initial concept and transformed it into a visual masterpiece. An absolute pleasure to work with.",
+            name: "Jane Doe",
+            title: "Marketing Director, Creative Inc."
+        },
+        {
+            id: 2,
+            quote: "The dedication Jeremy brings to the table is incredible. He consistently delivered high-quality work on schedule and was always open to feedback. Highly recommended!",
+            name: "John Smith",
+            title: "Project Manager, Tech Solutions"
+        },
+        {
+            id: 3,
+            quote: "We hired Jeremy for a complex videography project, and the final product exceeded all our expectations. His storytelling ability through the lens is truly exceptional.",
+            name: "Emily White",
+            title: "Founder, Visionary Films"
         },
     ];
 
@@ -407,8 +473,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectModal = document.getElementById('project-modal');
     const modalContent = document.getElementById('modal-content');
-    let currentProjectIndex = 0;
+    const certificatesGrid = document.getElementById('certificates-grid');
+    const recommendationsGrid = document.getElementById('recommendations-grid');
+
     let currentlyDisplayedProjects = [];
+    let currentlyDisplayedCertificates = [];
 
     const renderPortfolio = (filter = 'all') => {
         portfolioGrid.innerHTML = '';
@@ -428,6 +497,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             portfolioGrid.appendChild(projectCard);
+        });
+    };
+    
+    const renderCertificates = () => {
+        certificatesGrid.innerHTML = '';
+        currentlyDisplayedCertificates = certificatesData;
+
+        currentlyDisplayedCertificates.forEach((cert, index) => {
+            const certCard = document.createElement('div');
+            certCard.className = 'certificate-item group relative overflow-hidden rounded-lg shadow-lg cursor-pointer';
+            certCard.dataset.index = index;
+            certCard.innerHTML = `
+                <img src="${cert.thumbnail}" alt="${cert.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <h3 class="text-xl font-bold text-white text-center">${cert.title}</h3>
+                    <span class="text-sm text-gray-300 mt-1">${cert.categoryLabel}</span>
+                </div>
+            `;
+            certificatesGrid.appendChild(certCard);
+        });
+    };
+    
+    const renderRecommendations = () => {
+        recommendationsGrid.innerHTML = '';
+        recommendationsData.forEach(rec => {
+            const recCard = document.createElement('div');
+            recCard.className = 'bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col';
+            recCard.innerHTML = `
+                <p class="text-gray-300 italic flex-grow">"${rec.quote}"</p>
+                <div class="mt-4 pt-4 border-t border-gray-700">
+                    <p class="font-bold text-white">${rec.name}</p>
+                    <p class="text-sm text-indigo-400">${rec.title}</p>
+                </div>
+            `;
+            recommendationsGrid.appendChild(recCard);
         });
     };
 
@@ -470,12 +574,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
             ` : '';
+             const counterHTML = project.images.length > 1 ? `<div id="image-counter" class="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">${currentImageIndex + 1} / ${project.images.length}</div>` : '';
 
             mediaAreaHTML = `
                 <div id="media-container">
                     <img id="modal-image" src="${project.images[0]}" class="w-full h-full object-contain" alt="Project image 1">
                     ${controlsHTML}
-                    <div id="image-counter" class="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">${currentImageIndex + 1} / ${project.images.length}</div>
+                    ${counterHTML}
                 </div>
             `;
         }
@@ -493,7 +598,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
             ${mediaAreaHTML}
-            ${descriptionAreaHTML}
+            ${project.description ? descriptionAreaHTML : ''}
         `;
         
         projectModal.classList.remove('hidden');
@@ -529,16 +634,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     const closeModal = () => {
-        // Stop any media that might be playing
-        const video = modalContent.querySelector('video');
-        if (video) {
-            video.pause();
-            video.src = "";
-        }
-        // ⭐ MODIFICATION: Also stop iframe videos from playing
         const iframe = modalContent.querySelector('iframe');
         if (iframe) {
-            iframe.src = ""; // Setting src to empty stops playback
+            iframe.src = "";
         }
 
         projectModal.classList.add('modal-leave');
@@ -557,15 +655,20 @@ document.addEventListener('DOMContentLoaded', () => {
             openModal(currentlyDisplayedProjects[projectIndex]);
         }
     });
+    
+    certificatesGrid.addEventListener('click', (e) => {
+        const card = e.target.closest('.certificate-item');
+        if (card) {
+            const certIndex = parseInt(card.dataset.index, 10);
+            openModal(currentlyDisplayedCertificates[certIndex]);
+        }
+    });
 
     document.addEventListener('keydown', (e) => {
         if (!projectModal.classList.contains('hidden')) {
             if (e.key === 'Escape') closeModal();
-            const project = currentlyDisplayedProjects.find(p => p.title === modalContent.querySelector('h3')?.textContent);
-            if (project && project.images && project.images.length > 1) {
-                if (e.key === 'ArrowRight') document.getElementById('modal-next-btn')?.click();
-                if (e.key === 'ArrowLeft') document.getElementById('modal-prev-btn')?.click();
-            }
+            if (e.key === 'ArrowRight') document.getElementById('modal-next-btn')?.click();
+            if (e.key === 'ArrowLeft') document.getElementById('modal-prev-btn')?.click();
         }
     });
 
@@ -621,10 +724,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     form.addEventListener("submit", handleSubmit);
 
+    // Initial renders
     renderPortfolio();
+    renderCertificates();
+    renderRecommendations();
 });
 </script>
 
 </body>
 </html>
-
