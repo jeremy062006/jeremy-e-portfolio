@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremy Orozco | Creative Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark background */
+            color: #d1d5db; /* Light gray text */
+        }
+        /* Custom scrollbar for a more modern look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #6366f1;
+            transition: width .3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .modal-enter {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .modal-leave {
+            animation: fadeOut 0.3s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.95); }
+        }
+
+        /* --- ⭐ FINAL MODAL FIX (Re-engineered with CSS Grid) ⭐ --- */
+        #modal-content {
+            display: grid; /* Use robust CSS Grid for layout */
+            grid-template-rows: minmax(0, 1fr) auto; /* Row 1 (media) grows, Row 2 (description) is auto */
+            overflow: hidden; /* Keep content within rounded corners */
+        }
+        #media-container {
+            position: relative; /* Needed for positioning the nav buttons */
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        #description-container {
+           overflow-y: auto; /* Allow scrolling for long descriptions */
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-white">Jeremy Orozco</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-300 hover:text-white transition-colors duration-300 active" data-section="home">Home</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors duration-300" data-section="about">About</a>
+                <a href="#portfolio" class="nav-link text-gray-300 hover:text-white transition-colors duration-300" data-section="portfolio">Portfolio</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-white transition-colors duration-300" data-section="contact">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#home" class="block py-2 text-gray-300 hover:text-white">Home</a>
+            <a href="#about" class="block py-2 text-gray-300 hover:text-white">About</a>
+            <a href="#portfolio" class="block py-2 text-gray-300 hover:text-white">Portfolio</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-white">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen flex items-center bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-10">
+                    <img src="pfp.jpg" alt="Jeremy Orozco" class="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-indigo-500 shadow-lg">
+                    <div class="text-center md:text-left">
+                        <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">Jeremy Jasim Orozco</h1>
+                        <p class="text-lg md:text-xl text-gray-400 mt-4 max-w-xl">Multimedia Artist based in Butuan City.</p>
+                        <div class="mt-8 flex justify-center md:justify-start space-x-4">
+                            <a href="https://www.instagram.com/jeremyorozco__/" target="_blank" class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/></svg></a>
+                            <a href="https://www.linkedin.com/in/jeremy-orozco/" target="_blank" class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                            <a href="https://www.facebook.com/jeremyjasim.orozco/" target="_blank" class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">About Me</h2>
+                <div class="max-w-3xl mx-auto text-center text-gray-300 text-lg leading-relaxed">
+                    <p class="mb-4">Hello! I’m Jeremy, a passionate and versatile creative professional dedicated to transforming ideas into impactful visuals. With a strong foundation in photography, videography, and graphic design, I specialize in crafting stories that not only capture attention but also inspire and connect with people.</p>
+                    <p class="mb-4">My creative journey began with a simple camera and has since evolved into a multi-faceted practice where I combine artistry with strategy. For me, design goes beyond aesthetics—it is about communication, meaning, and creating memorable experiences that leave a lasting impression.</p>
+                    <p>Whether I’m behind the lens, editing dynamic multimedia content, or developing a brand identity, my commitment remains the same: to deliver high-quality work that resonates, inspires, and exceeds expectations. Let’s collaborate to bring ideas to life and create something extraordinary.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">My Work</h2>
+                
+                <!-- Filter Buttons -->
+                <div id="filter-buttons" class="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+                    <button class="filter-btn active bg-indigo-600 text-white px-4 py-2 rounded-md transition-all duration-300" data-filter="all">All</button>
+                    <button class="filter-btn bg-gray-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition-all duration-300" data-filter="photography">Photography</button>
+                    <button class="filter-btn bg-gray-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition-all duration-300" data-filter="video-editing">Video Editing</button>
+                    <button class="filter-btn bg-gray-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition-all duration-300" data-filter="videography">Videography</button>
+                    <button class="filter-btn bg-gray-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition-all duration-300" data-filter="graphic-design">Graphic Design</button>
+                </div>
+
+                <!-- Portfolio Grid -->
+                <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Portfolio items will be injected here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">Get In Touch</h2>
+                <div class="max-w-lg mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <form id="contact-form" action="https://formspree.io/f/xovnpqyp" method="POST">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:border-indigo-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:border-indigo-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full bg-gray-700 border border-gray-600 rounded-md py-2 px-3 text-white focus:outline-none focus:border-indigo-500" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-md transition-colors duration-300 w-full">Send Message</button>
+                        </div>
+                    </form>
+                    <p id="form-status" class="text-center mt-4"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-6">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 Jeremy Orozco || Gemini. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-[60] hidden">
+        <div id="modal-content" class="bg-gray-800 text-white w-full max-w-4xl max-h-[90vh] rounded-lg shadow-2xl relative">
+            <!-- Modal content will be injected here by JavaScript -->
+        </div>
+    </div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // =================================================================
+    // =========== 🚀 START EDITING HERE! 🚀 ==========================
+    // =================================================================
+    const portfolioData = [
+        {
+            id: 1,
+            title: "2025 Miting de Avance | Camella Butuan",
+            category: "photography",
+            categoryLabel: "Photography",
+            thumbnail: "Miting de avance/BBC07952.jpg",
+            images: [
+                "Miting de avance/BBC07952.jpg",
+                "Miting de avance/BBC07956.jpg",
+                "Miting de avance/BBC08129.jpg",
+                "Miting de avance/BBC08139.jpg"
+            ],
+            description: "A series of photographs capturing the dynamic energy of city life at dusk. <br><br>This project explores the interplay between light, shadow, and architecture in the urban environment."
+        },
+        {
+            id: 2,
+            title: "4 Idyoks Short Film",
+            category: "videography",
+            categoryLabel: "Videography",
+            thumbnail: "BBC03569.JPG",
+            // ⭐ MODIFICATION: Use 'gdriveVideoId' for Google Drive videos.
+            // How to get the ID:
+            // 1. Share your video in Google Drive ("Anyone with the link").
+            // 2. The share link will look like: https://drive.google.com/file/d/THIS_IS_THE_ID/view?usp=sharing
+            // 3. Copy `THIS_IS_THE_ID` and paste it below.
+            gdriveVideoId: "1qzNnY6uESh7wZW-BNGG1_1ZletEp7gQT", // <-- PASTE YOUR GOOGLE DRIVE FILE ID HERE
+            description: "Directed and filmed a short narrative film, '4 Idyoks'. This project involved storyboarding, cinematography, and on-set direction to bring a compelling story to life."
+        },
+        {
+            id: 3,
+            title: "Orgon Wood Industries | Product Shoot",
+            category: "photography",
+            categoryLabel: "Photography",
+            thumbnail: "Orgon Wood/all_.jpg",
+            images: [
+                "Orgon Wood/all.jpg",
+                "Orgon Wood/5mm Marine Type 1 (3).jpg",
+                "Orgon Wood/10mm marine type-1 (2).jpg",
+                "Orgon Wood/10mm marine type-1 (3).jpg",
+                "Orgon Wood/18mm ordinary type 2 (2).jpg"
+            ],
+            description: "Directed and shot a series of high-energy product videos for a new fashion line. Focused on dynamic camera movements and lighting to showcase the product details and appeal to the target audience."
+        },
+        {
+            id: 4,
+            title: "2025 Youth Camp Logo Design",
+            category: "graphic-design",
+            categoryLabel: "Graphic Design",
+            thumbnail: "CAMP LOGO/A4 Presentation.jpg",
+            images: [
+                "CAMP LOGO/PRIMARY LOGO (1).png",
+                "CAMP LOGO/Camp Promotion for Screen.jpg"
+            ],
+            description: "Developed a clean and modern logo identity for a startup. The design process included market research, concept sketching, and final vector asset delivery."
+        },
+        {
+            id: 5,
+            title: "2025 Proclamation and Oath Taking Ceremony | Camella Butuan",
+            category: "photography",
+            categoryLabel: "Photography",
+            thumbnail: "Camella/BBC00030.jpg",
+            images: [
+                "Camella/BBC00031.jpg",
+                "Camella/BBC00038.jpg",
+                "Camella/BBC00040.jpg",
+                "Camella/BBC00047.jpg",
+                "Camella/BBC00050.jpg",
+            ],
+            description: "A portrait series that blends human subjects with natural landscapes, aiming to capture a sense of harmony and connection with the environment."
+        },
+        {
+            id: 6,
+            title: "2024 Youth Camp | Shirt Design",
+            category: "graphic-design",
+            categoryLabel: "Graphic Design",
+            thumbnail: "2024 YOUTH CAMP/BLUE_CEDAR_1.jpg",
+            images: [
+                "2024 YOUTH CAMP/BLUE_CEDAR_1.jpg",
+                "2024 YOUTH CAMP/FOR SIR ADRIAN AND OTHERS 2.jpg",
+                "2024 YOUTH CAMP/FOR SIR ADRIAN AND OTHERS.jpg",
+                "2024 YOUTH CAMP/GOLDEN_YELLOW_SYCAMORE_.jpg",
+                "2024 YOUTH CAMP/GREEN_ACACIA_3.jpg",
+                "2024 YOUTH CAMP/GREY_PALM_5.png",
+                "2024 YOUTH CAMP/PURPLE_MYRTLE.jpg",
+                "2024 YOUTH CAMP/RED_OLIVE 1.jpg",
+            ],
+            description: "Designed a full suite of visual assets for a social media marketing campaign, including static images, carousels, and animated stories. The campaign resulted in a 30% increase in user engagement."
+        },
+        {
+            id: 7,
+            title: "2025 Youth Camp Logo Design",
+            category: "graphic-design",
+            categoryLabel: "Graphic Design",
+            thumbnail: "CAMP LOGO/White Background.png",
+            images: [
+                "CAMP LOGO/YOUTH CAMP 2024 PROMOTIONAL SLIDE.jpg"
+            ],
+            description: "Developed a clean and modern logo identity for a startup. The design process included market research, concept sketching, and final vector asset delivery."
+        },
+        {
+            id: 8,
+            title: "2025 CBHOA MEETING with BCWD",
+            category: "photography",
+            categoryLabel: "Photography",
+            thumbnail: "CBHOA MEETING with BCWD/DSC04426.jpg",
+            images: [
+                "CBHOA MEETING with BCWD/DSC04426.jpg",
+                "CBHOA MEETING with BCWD/DSC04435.jpg",
+                "CBHOA MEETING with BCWD/DSC04443.jpg",
+                "CBHOA MEETING with BCWD/DSC04452.jpg",
+                "CBHOA MEETING with BCWD/DSC04463.jpg",
+                "CBHOA MEETING with BCWD/DSC04483.jpg",
+                "CBHOA MEETING with BCWD/DSC04492.jpg",
+                "CBHOA MEETING with BCWD/DSC04498.jpg",
+                "CBHOA MEETING with BCWD/DSC04557.jpg",
+                "CBHOA MEETING with BCWD/DSC04561.jpg",
+            ],
+            description: "A portrait series that blends human subjects with natural landscapes, aiming to capture a sense of harmony and connection with the environment."
+        },
+        {
+            id: 9,
+            title: "2025 CBHOA 1st General Assembly",
+            category: "photography",
+            categoryLabel: "Photography",
+            thumbnail: "CBHOA_1st_General_Assembly/DSC05610.jpg",
+            images: [
+                "CBHOA_1st_General_Assembly/DSC05610.jpg",
+                "CBHOA_1st_General_Assembly/DSC05614.jpg",
+                "CBHOA_1st_General_Assembly/DSC05627.jpg",
+                "CBHOA_1st_General_Assembly/DSC05631.jpg",
+                "CBHOA_1st_General_Assembly/DSC05638.jpg",
+                "CBHOA_1st_General_Assembly/DSC05656.jpg",
+                "CBHOA_1st_General_Assembly/DSC05664.jpg",
+                "CBHOA_1st_General_Assembly/DSC05711.jpg",
+            ],
+            description: "A portrait series that blends human subjects with natural landscapes, aiming to capture a sense of harmony and connection with the environment."
+        },
+        {
+            id: 10,
+            title: "2025 CBHOAI Medical Mission",
+            category: "photography",
+            categoryLabel: "Photography",
+            thumbnail: "CBHOAI Medical Mission 2025/BBC00667.jpg",
+            images: [
+                "CBHOAI Medical Mission 2025/BBC00667.jpg",
+                "CBHOAI Medical Mission 2025/BBC00673.jpg",
+                "CBHOAI Medical Mission 2025/BBC00694.jpg",
+                "CBHOAI Medical Mission 2025/BBC00705.jpg",
+                "CBHOAI Medical Mission 2025/BBC00721.jpg",
+                "CBHOAI Medical Mission 2025/BBC00813.jpg",
+                "CBHOAI Medical Mission 2025/BBC00848.jpg",
+                "CBHOAI Medical Mission 2025/BBC00850.jpg",
+            ],
+            description: "A portrait series that blends human subjects with natural landscapes, aiming to capture a sense of harmony and connection with the environment."
+        },
+        {
+            id: 11,
+            title: "GSCA Jersey",
+            category: "graphic-design",
+            categoryLabel: "Graphic Design",
+            thumbnail: "GSCA JERSEY/GSCA JERSEY FOR NSC 2025 FOR OTHER EVENTS - Copy.png",
+            images: [
+                "GSCA JERSEY/GSCA JERSEY FOR NSC 2025 FOR OTHER EVENTS.png",
+                "GSCA JERSEY/GSCA JERSEY FOR NSC 2025 FOR TCHOUCKBALL.png",
+            ],
+            description: "Developed a clean and modern logo identity for a startup. The design process included market research, concept sketching, and final vector asset delivery."
+        },
+        {
+            id: 12,
+            title: "Talents Fest 2024",
+            category: "graphic-design",
+            categoryLabel: "Graphic Design",
+            thumbnail: "BBC CAPITOL/TALENTS FEST 2024/Talent's Fest.jpg",
+            images: [
+                "BBC CAPITOL/TALENTS FEST 2024/Talent's Fest.jpg",
+                "BBC CAPITOL/TALENTS FEST 2024/Thank you Poster.jpg",
+            ],
+            description: "Developed a clean and modern logo identity for a startup. The design process included market research, concept sketching, and final vector asset delivery."
+        },
+        {
+            id: 13,
+            title: "Manly Ad 1",
+            category: "video-editing",
+            categoryLabel: "Video-editing",
+            thumbnail: "Video Edited For Company - Manly/HOOK 1.png",
+            gdriveVideoId: "1jCg8hlzEgX4nUl8zcnGAzvJ_7TbmX5sq", // <-- PASTE YOUR GOOGLE DRIVE FILE ID HERE
+            description: "Edited a compelling brand story video for a major tech company. Responsible for pacing, color grading, sound design, and motion graphics to create a polished and impactful final product."
+        },
+        {
+            id: 14,
+            title: "Manly Ad 2",
+            category: "video-editing",
+            categoryLabel: "Video-editing",
+            thumbnail: "Video Edited For Company - Manly/HOOK 2.png",
+            gdriveVideoId: "1weSEIH3IAIEvVADGAcMmiO3c77eBIHEU", // <-- PASTE YOUR GOOGLE DRIVE FILE ID HERE
+            description: "Edited a compelling brand story video for a major tech company. Responsible for pacing, color grading, sound design, and motion graphics to create a polished and impactful final product."
+        },
+    ];
+
+    // =================================================================
+    // =========== 🛑 STOP EDITING HERE! 🛑 ===========================
+    // =================================================================
+
+    const portfolioGrid = document.getElementById('portfolio-grid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectModal = document.getElementById('project-modal');
+    const modalContent = document.getElementById('modal-content');
+    let currentProjectIndex = 0;
+    let currentlyDisplayedProjects = [];
+
+    const renderPortfolio = (filter = 'all') => {
+        portfolioGrid.innerHTML = '';
+        currentlyDisplayedProjects = portfolioData.filter(project => 
+            filter === 'all' || project.category === filter
+        );
+
+        currentlyDisplayedProjects.forEach((project, index) => {
+            const projectCard = document.createElement('div');
+            projectCard.className = 'portfolio-item group relative overflow-hidden rounded-lg shadow-lg cursor-pointer';
+            projectCard.dataset.index = index;
+            projectCard.innerHTML = `
+                <img src="${project.thumbnail}" alt="${project.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <h3 class="text-xl font-bold text-white text-center">${project.title}</h3>
+                    <span class="text-sm text-gray-300 mt-1">${project.categoryLabel}</span>
+                </div>
+            `;
+            portfolioGrid.appendChild(projectCard);
+        });
+    };
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active', 'bg-indigo-600');
+                btn.classList.add('bg-gray-700');
+            });
+            button.classList.add('active', 'bg-indigo-600');
+            button.classList.remove('bg-gray-700');
+            renderPortfolio(button.dataset.filter);
+        });
+    });
+
+    let currentImageIndex = 0;
+
+    const updateModalContent = (project) => {
+        currentImageIndex = 0;
+        let mediaAreaHTML = '';
+
+        if (project.gdriveVideoId) {
+            mediaAreaHTML = `
+                <div id="media-container">
+                    <iframe 
+                        src="https://drive.google.com/file/d/${project.gdriveVideoId}/preview" 
+                        class="w-full max-h-full aspect-video" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            `;
+        } else if (project.images && project.images.length > 0) {
+            const controlsHTML = project.images.length > 1 ? `
+                <button id="modal-prev-btn" class="absolute top-1/2 left-2 md:left-4 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/80 transition-all z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button id="modal-next-btn" class="absolute top-1/2 right-2 md:right-4 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/80 transition-all z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            ` : '';
+
+            mediaAreaHTML = `
+                <div id="media-container">
+                    <img id="modal-image" src="${project.images[0]}" class="w-full h-full object-contain" alt="Project image 1">
+                    ${controlsHTML}
+                    <div id="image-counter" class="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">${currentImageIndex + 1} / ${project.images.length}</div>
+                </div>
+            `;
+        }
+        
+        const descriptionAreaHTML = `
+            <div id="description-container" class="p-6 md:p-8 bg-gray-800">
+                <h3 class="text-2xl font-bold mb-2">${project.title}</h3>
+                <span class="inline-block bg-indigo-500 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">${project.categoryLabel}</span>
+                <p class="text-gray-300 leading-relaxed">${project.description}</p>
+            </div>
+        `;
+
+        modalContent.innerHTML = `
+            <button id="close-modal-btn" class="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors z-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            ${mediaAreaHTML}
+            ${descriptionAreaHTML}
+        `;
+        
+        projectModal.classList.remove('hidden');
+        projectModal.classList.add('modal-enter');
+        document.body.style.overflow = 'hidden';
+
+        if (project.images && project.images.length > 1) {
+            const modalImage = document.getElementById('modal-image');
+            const counter = document.getElementById('image-counter');
+            
+            const updateImage = () => {
+                modalImage.src = project.images[currentImageIndex];
+                if(counter) counter.textContent = `${currentImageIndex + 1} / ${project.images.length}`;
+            };
+
+            document.getElementById('modal-next-btn').addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex + 1) % project.images.length;
+                updateImage();
+            });
+            document.getElementById('modal-prev-btn').addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex - 1 + project.images.length) % project.images.length;
+                updateImage();
+            });
+        }
+    };
+    
+    const openModal = (project) => {
+      updateModalContent(project);
+      document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+      projectModal.addEventListener('click', (e) => {
+          if (e.target === projectModal) closeModal();
+      });
+    };
+    
+    const closeModal = () => {
+        // Stop any media that might be playing
+        const video = modalContent.querySelector('video');
+        if (video) {
+            video.pause();
+            video.src = "";
+        }
+        // ⭐ MODIFICATION: Also stop iframe videos from playing
+        const iframe = modalContent.querySelector('iframe');
+        if (iframe) {
+            iframe.src = ""; // Setting src to empty stops playback
+        }
+
+        projectModal.classList.add('modal-leave');
+        setTimeout(() => {
+            projectModal.classList.add('hidden');
+            projectModal.classList.remove('modal-enter', 'modal-leave');
+            modalContent.innerHTML = '';
+            document.body.style.overflow = 'auto';
+        }, 300);
+    };
+
+    portfolioGrid.addEventListener('click', (e) => {
+        const card = e.target.closest('.portfolio-item');
+        if (card) {
+            const projectIndex = parseInt(card.dataset.index, 10);
+            openModal(currentlyDisplayedProjects[projectIndex]);
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!projectModal.classList.contains('hidden')) {
+            if (e.key === 'Escape') closeModal();
+            const project = currentlyDisplayedProjects.find(p => p.title === modalContent.querySelector('h3')?.textContent);
+            if (project && project.images && project.images.length > 1) {
+                if (e.key === 'ArrowRight') document.getElementById('modal-next-btn')?.click();
+                if (e.key === 'ArrowLeft') document.getElementById('modal-prev-btn')?.click();
+            }
+        }
+    });
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('shadow-lg', window.scrollY > 50));
+    
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('main section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === entry.target.id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { rootMargin: '-30% 0px -70% 0px' });
+    sections.forEach(section => observer.observe(section));
+
+    const form = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        formStatus.textContent = 'Sending...';
+        formStatus.className = 'text-center mt-4 text-blue-400';
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                formStatus.textContent = "Thanks for your message! I'll be in touch soon.";
+                formStatus.className = 'text-center mt-4 text-green-400';
+                form.reset();
+            } else {
+                response.json().then(data => {
+                    formStatus.textContent = data.errors ? data.errors.map(e => e.message).join(', ') : "Oops! There was a problem.";
+                    formStatus.className = 'text-center mt-4 text-red-400';
+                });
+            }
+        }).catch(error => {
+            formStatus.textContent = "Oops! There was a problem submitting your form.";
+            formStatus.className = 'text-center mt-4 text-red-400';
+        });
+    }
+    form.addEventListener("submit", handleSubmit);
+
+    renderPortfolio();
+});
+</script>
+
+</body>
+</html>
+
